@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col col-md-6 col-center">
+    <div class="col col-md-6 col-center mx-auto">
       <div class="container mb-5 mt-3" style="text-align: center;">
         <h3>Register</h3>
       </div>
@@ -44,12 +44,18 @@
         </div>
         <div class="form-group">
           <label>Role</label>
-          <input
+          <!-- <input
             type="text"
             class="form-control"
             name="empRole"
             [(ngModel)]="employee.empRole"
-          />
+          /> -->
+          <select class="custom-select form-control" id="empRole" name="empRole" [(ngModel)]="employee.empRole" required>
+            <option value="">Select your Role</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="devtest">Developer/Tester</option>
+          </select>
         </div>
         <div class="form-group">
           <label>UserName</label>
@@ -60,7 +66,7 @@
             [(ngModel)]="employee.empUserName"
           />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>MgrID</label>
           <input
             type="text"
@@ -68,7 +74,7 @@
             name="MgrID"
             [(ngModel)]="employee.mgrId"
           />
-        </div>
+        </div> -->
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Register</button>
         </div>

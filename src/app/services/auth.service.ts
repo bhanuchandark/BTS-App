@@ -19,13 +19,14 @@ export class AuthService {
 
   public validateUser(username, password) {
     return this.httpClient
-      .post<any>("http://localhost:9090/Employee/authenticate", {
-        username,
-        password
+      .post<any>("http://192.168.43.230:7070/authenticate", {
+        empId:username,
+        empPassword:password
       })
       .pipe(
         map(data => {
-          if (data.success === true) {
+          console.log(data);
+          if (data === true) {
             this.LoggedIn = true;
             return true;
           } else {
@@ -35,22 +36,23 @@ export class AuthService {
         })
       );
   }
-  
-  public register(empId, empName, empEmail, empPassword,empRole,empUserName,mgrId) {
+
+  public register(empId, empName, empEmail, empPassword,empRole,empUserName) {
+    
+    console.log(empId)
     return this.httpClient
-      .post<any>("http://localhost:9090/Employee/register", {
-        empId,
-        empName,
-        empEmail,
-        empPassword,
-        empRole,
-        empUserName,
-        mgrId
+      .post<any>("http://192.168.43.230:7070/register", {
+        empId:empId,
+        empName:empName,
+        empEmail:empEmail,
+        empPassword:empPassword,
+        empRole:empRole,
+        empUserName:empUserName   
       })
       .pipe(
         map(data => {
           console.log(data);
-          if (data.success === true) {
+          if (data === true) {
             return true;
           } else {
             return false;

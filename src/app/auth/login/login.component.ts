@@ -22,13 +22,29 @@ export class LoginComponent implements OnInit {
     this.authService
       .validateUser(this.username, this.password)
       .subscribe(data => {
-        if (data === true) {
+        if (data == true) {
           this.invalidLogin = false;
-          this.router.navigateByUrl("/");
+          console.log("success")
+          this.router.navigateByUrl("/register");
         } else {
+          console.log("bye")
+          console.log(data)
+          
           this.invalidLogin = true;
         }
       });
   }
+  
+
+  // checkLogin(){
+  //   if(this.username=="bhanu@gmail.com" && this.password=="bhanu"){
+  //     console.log("Hello")
+  //     this.invalidLogin = false;
+  //     this.router.navigateByUrl("/register");
+  //   }else{
+  //     this.invalidLogin = true;
+  //     console.log("bye")
+  //   }
+  // }
 
 }
